@@ -5,6 +5,44 @@
     <title>Job application form</title>
 </head>
 <body>
+    <h2>Job Application Form</h2>
+    <form>
+
+        <div>
+        <label for="first_name">First name:</label>
+        <input type="text" id="first_name" name="firstname" required>
+        </div>
+        <div>
+        <label for="last_name">Last name:</label>
+        <input type="text" id="last_name" name="lastname" required>
+        </div>
+        <div>
+        <label for="email">Email address:</label>
+        <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+        <label for="start_date">Ready to join by:</label>
+        <input type="date" id="start_date" name="startdate" required>
+        </div>
+
+        <div>
+            <label>Current employment status:</label>
+            <br>
+            <div id="occupation">
+                <input type="radio" id="employed" name="occupation" required>
+                <label for="employed">Employed</label>
+                <input type="radio" id="unemployed" name="occupation" required>
+                <label for="unemployed">Unemployed</label>
+                <input type="radio" id="self_employed" name="occupation" required>
+                <label for="self_employed">Self-employed</label>
+                <input type="radio" id="student" name="occupation" required>
+                <label for="student">Student</label>
+            </div>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    
 
 </body>
 </html>
