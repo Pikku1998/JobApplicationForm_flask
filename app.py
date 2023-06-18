@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 app = Flask(__name__)  # app instance
 app.config['SECRET_KEY'] = 'secretkey'
@@ -13,7 +14,7 @@ class FormData(db.Model):
     first_name = db.Column(db.String(50))
     last_name = db.Column(db.String(50))
     email = db.Column(db.String(50))
-    date = db.Column(db.Date)
+    start_date = db.Column(db.Date)
     occupation = db.Column(db.String(20))
 
 
@@ -24,7 +25,16 @@ def index():
         last_name = request.form['lastname']
         email = request.form['email']
         start_date = request.form['start_date']
+        date_object = datetime.strptime(start_date, '%Y-%m-%d')
         occupation = request.form['occupation']
+
+        form = FormData(first_name=first_name,
+                        last_name=last_name,
+                        email=email,
+                        start_date=date_object,
+                        occupation=occupation)
+        db.session.add(form)
+        db.session.commit()
 
     return render_template('index.html')
 
